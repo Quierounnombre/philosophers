@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:43:11 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/01 15:52:26 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/02 12:02:00 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,17 @@ infinita, eterna y perfecta
 
 @brief Structura general del philosophers
 @param n_philos numero de filosofos
-@param time_to_die cuanto tardan en morir
-@param time_to_eat cuanto tardan en comer
-@param time_to_sleep cuanto tardan en dormir
+@param time_to_die cuanto tardan en morir, en ms
+@param time_to_eat cuanto tardan en comer, en ms
+@param time_to_sleep cuanto tardan en dormir, en ms
 @param meals cuantas veces tienen que comer
 */
 typedef struct s_spinoza
 {
 	int		n_philos;
-	float	time_to_die;
-	float	time_to_eat;
-	float	time_to_sleep;
+	int		time_to_die;
+	int		time_to_eat;
+	int		time_to_sleep;
 	int		meals;
 }			t_spinoza;
 
