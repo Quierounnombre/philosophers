@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:39:34 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/02 11:55:00 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/02 12:57:48 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,12 @@ ellos.
 
 t_bool	affinius(t_spinoza **spinoza);
 t_bool	diogenes(int argc, char **argv, t_spinoza *spinoza);
+
+
+//UTILS
+char	*ft_itoa(int c);
+size_t	ft_strlen(const char *s);
+int		ft_atoi(const char *str);
+char	*ft_strdup(const char *s1);
 
 #endif

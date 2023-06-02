@@ -6,14 +6,14 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:38:01 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/02 12:47:09 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/02 12:58:14 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "laplace.h"
 
 static t_bool	parse_argc(const char **argv);
-static int		ft_atoi(const char *str);
+static t_bool	check_overflow(const char *argv);
 
 /*
 @par diogenes se caracteriza por su peculiar vida y filosofia, es uno de los
@@ -50,13 +50,6 @@ t_bool	diogenes(int argc, char **argv, t_spinoza *spinoza)
 
 //------------------------------------------------------------------------
 
-static t_bool	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (true);
-	return (false);
-}
-
 static t_bool	parse_argc(const char **argv)
 {
 	int		i;
@@ -68,10 +61,12 @@ static t_bool	parse_argc(const char **argv)
 	{
 		while (argv[i][j])
 		{
-			if (!ft_isdigit(argv[i][j]))
+			if (!(argv[i][j] >= '0' && argv[i][j] <= '9'))
 				return (true);
 			j++;
 		}
+		if (check_overflow(argv[i]))
+			return (true);
 		i++;
 	}
 	return (false);
@@ -79,27 +74,19 @@ static t_bool	parse_argc(const char **argv)
 
 //------------------------------------------------------------------------
 
-static int	ft_atoi(const char *str)
+static t_bool	check_overflow(const char *argv)
 {
-	int	i;
-	int	neg;
+	char	*s;
 
-	i = 0;
-	neg = 1;
-	while (*str == '\t' || *str == '\n' || *str == '\v' || *str == '\f'
-		|| *str == '\r' || *str == ' ')
-		str++;
-	if (*str == '-')
+	s = ft_itoa(ft_atoi(argv));
+	if (s)
 	{
-		neg = -1;
-		str++;
-	}
-	else if (*str == '+')
-		str++;
-	while (*str >= '0' && *str <= '9')
-	{
-		i = (i * 10) + (*str - '0');
-		str++;
-	}
-	return (i * neg);
+		if (ft_strlen(s) != ft_strlen(argv))
+		{
+			free(s);
+			return (true);
+		}
+		free(s);
+	}	
+	return (false);
 }

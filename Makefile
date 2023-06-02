@@ -25,6 +25,8 @@ RESET = \033[0m
 FILES = Affinius \
 		diogenes \
 		Tales_de_mileto \
+		utils \
+		utils_2 \
 
 DIR = ./
 SRCS = $(addprefix $(DIR), $(addsuffix .c, $(FILES)))
