@@ -34,6 +34,7 @@ FILES_UTILS =	ft_atoi \
 				ft_itoa \
 				ft_strdup \
 				ft_strlen \
+				print_error_msg \
 
 DIR_UTILS = ./Utils/
 SRCS_UTILS = $(addprefix $(DIR_UTILS), $(addsuffix .c, $(FILES_UTILS)))

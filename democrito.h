@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:43:11 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/05 10:37:13 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/05 14:46:49 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,31 @@ typedef struct s_spinoza
 	int		time_to_sleep;
 	int		meals;
 }			t_spinoza;
+
+//------------------------------------------------------------------------------
+
+# ifndef MIN_ARGCS
+#  define MIN_ARGCS 5
+# endif
+
+# ifndef MAX_ARGCS
+#  define MAX_ARGCS 6
+# endif
+
+# ifndef ERROR_MSG_N_ARGS
+#  define ERROR_MSG_N_ARGS "El numero de argumentos es incorrecto\n"
+# endif
+
+# ifndef ERROR_MSG_INCORRECT_PARSE
+#  define ERROR_MSG_INCORRECT_PARSE "\n\n\
+Los argumentos entán mal formateados,\
+tienen que estar en formato numerico entero,\nej: 0 1 41 etc, distribuidos \
+de esta manera:\n\
+numero de filosofos\n\
+tiempo hasta su muerte(en ms)\n\
+tiempo para comer(en ms)\n\
+tiempo para dormir(en ms)\n\
+(OPCIONAL)Numero de comidas\n\n\n"
+# endif
 
 #endif

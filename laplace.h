@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:39:34 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/05 10:16:42 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/05 14:27:49 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,6 @@ ellos.
 # include <pthread.h>
 # include "democrito.h"
 
-# ifndef MIN_ARGCS
-#  define MIN_ARGCS 5
-# endif
-
-# ifndef MAX_ARGCS
-#  define MAX_ARGCS 6
-# endif
-
 t_bool	affinius(t_spinoza **spinoza);
 t_bool	diogenes(int argc, char **argv, t_spinoza *spinoza);
 
@@ -49,5 +41,6 @@ char	*ft_itoa(int c);
 size_t	ft_strlen(const char *s);
 int		ft_atoi(const char *str);
 char	*ft_strdup(const char *s1);
+t_bool	print_error_msg(char *error);
 
 #endif

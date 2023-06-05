@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:38:01 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/02 12:58:14 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/05 14:45:32 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ con los datos necesarios.
 t_bool	diogenes(int argc, char **argv, t_spinoza *spinoza)
 {
 	if (argc < MIN_ARGCS || argc > MAX_ARGCS)
-		return (false);
+		return (print_error_msg(ERROR_MSG_N_ARGS));
 	if (parse_argc((const char **)argv))
-		return (false);
+		return (print_error_msg(ERROR_MSG_INCORRECT_PARSE));
 	spinoza->n_philos = ft_atoi(argv[1]);
 	spinoza->time_to_die = ft_atoi(argv[2]);
 	spinoza->time_to_eat = ft_atoi(argv[3]);
@@ -65,6 +65,7 @@ static t_bool	parse_argc(const char **argv)
 				return (true);
 			j++;
 		}
+		j = 0;
 		if (check_overflow(argv[i]))
 			return (true);
 		i++;
