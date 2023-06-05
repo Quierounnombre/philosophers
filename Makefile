@@ -22,15 +22,25 @@ LYELLOW = \033[1;33m
 WHITE = \033[1;37m
 RESET = \033[0m
 
-FILES = Affinius \
-		diogenes \
-		Tales_de_mileto \
-		utils \
-		utils_2 \
+FILES_PHILO = 	Affinius \
+				diogenes \
+				Tales_de_mileto \
 
-DIR = ./
-SRCS = $(addprefix $(DIR), $(addsuffix .c, $(FILES)))
-OBJS = $(addprefix $(DIR), $(addsuffix .o, $(FILES)))
+DIR_PHILO = ./
+SRCS_PHILO = $(addprefix $(DIR_PHILO), $(addsuffix .c, $(FILES_PHILO)))
+OBJS_PHILO = $(addprefix $(DIR_PHILO), $(addsuffix .o, $(FILES_PHILO)))
+
+FILES_UTILS =	ft_atoi \
+				ft_itoa \
+				ft_strdup \
+				ft_strlen \
+
+DIR_UTILS = ./Utils/
+SRCS_UTILS = $(addprefix $(DIR_UTILS), $(addsuffix .c, $(FILES_UTILS)))
+OBJS_UTILS = $(addprefix $(DIR_UTILS), $(addsuffix .o, $(FILES_UTILS)))
+
+SRCS = $(SRCS_PHILO) $(SRCS_UTILS)
+OBJS = $(OBJS_PHILO) $(OBJS_UTILS)
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
