@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:43:11 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/05 14:46:49 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/06 10:57:25 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,30 @@ typedef struct s_spinoza
 	int		meals;
 }			t_spinoza;
 
+/*
+@par aristoteles fue un discipulo de platón, a diferencia de su maestro el
+coloco la experiencia como la fuente de conocimiento predilecta, esto se ve
+reflejado por ejemplo en el cuadro de "la escuela de atenas" donde se les
+puede ver a ambos debatir.
+
+Junto a su maestro se le considera uno de los padres de la filosofía occidental,
+fue el maestro de alejandro magno y es reconocido por multiples aportaciones
+a numerosas disciplinas.
+
+@brief Estructura creada para cada filosofo
+@param id Es el identificador
+@param spinoza es la estructura general del philo
+@param has_fork mide si el filosofo tiene el tenedor o no
+@param right es el filosofo que tiene a su derecha.
+*/
+typedef struct s_aristoteles
+{
+	int				id;
+	t_spinoza		spinoza;
+	t_bool			has_fork;
+	t_aristoteles	*right;
+}			t_aristoteles;
+
 //------------------------------------------------------------------------------
 
 # ifndef MIN_ARGCS
@@ -72,7 +96,8 @@ typedef struct s_spinoza
 # ifndef ERROR_MSG_INCORRECT_PARSE
 #  define ERROR_MSG_INCORRECT_PARSE "\n\n\
 Los argumentos entán mal formateados,\
-tienen que estar en formato numerico entero,\nej: 0 1 41 etc, distribuidos \
+tienen que estar en formato numerico entero,\n\
+ej: '0' '1' '41' etc, distribuidos \
 de esta manera:\n\
 numero de filosofos\n\
 tiempo hasta su muerte(en ms)\n\
