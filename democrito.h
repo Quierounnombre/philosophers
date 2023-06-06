@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:43:11 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/06 10:57:25 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/06 15:37:39 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,10 @@ a numerosas disciplinas.
 */
 typedef struct s_aristoteles
 {
-	int				id;
-	t_spinoza		spinoza;
-	t_bool			has_fork;
-	t_aristoteles	*right;
+	int						id;
+	t_spinoza				spinoza;
+	t_bool					has_fork;
+	struct s_aristoteles	*right;
 }			t_aristoteles;
 
 //------------------------------------------------------------------------------

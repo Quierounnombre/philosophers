@@ -25,6 +25,7 @@ RESET = \033[0m
 FILES_PHILO = 	Affinius \
 				diogenes \
 				Tales_de_mileto \
+				plato \
 
 DIR_PHILO = ./
 SRCS_PHILO = $(addprefix $(DIR_PHILO), $(addsuffix .c, $(FILES_PHILO)))

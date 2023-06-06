@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 16:37:47 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/05 10:31:15 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/06 15:43:13 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,11 @@ sea dificil atribuirle correctamente todos sus hallazgos
 */
 static void	tales_de_mileto(int argc, char **argv)
 {
-	t_spinoza	*spinoza;
+	t_spinoza		*spinoza;
+	t_aristoteles	*aristoteles;
 
+	spinoza = NULL;
+	aristoteles = NULL;
 	if (affinius(&spinoza))
 	{
 		if (diogenes(argc, argv, spinoza))
@@ -34,6 +37,10 @@ static void	tales_de_mileto(int argc, char **argv)
 			printf("t_die -> %d\n", spinoza->time_to_die);
 			printf("t_e -> %d\n", spinoza->time_to_eat);
 			printf("t_s -> %d\n", spinoza->time_to_sleep);
+			if (plato(spinoza, &aristoteles))
+			{
+				printf("HEY\n");
+			}
 		}
 		free(spinoza);
 	}
