@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 16:37:47 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/06 15:43:13 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/09 12:07:27 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,6 @@ static void	tales_de_mileto(int argc, char **argv)
 	{
 		if (diogenes(argc, argv, spinoza))
 		{
-			printf("philos -> %d\n", spinoza->n_philos);
-			printf("t_die -> %d\n", spinoza->time_to_die);
-			printf("t_e -> %d\n", spinoza->time_to_eat);
-			printf("t_s -> %d\n", spinoza->time_to_sleep);
 			if (plato(spinoza, &aristoteles))
 			{
 				printf("HEY\n");

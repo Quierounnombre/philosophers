@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 15:44:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/06 15:42:40 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/09 12:06:48 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static void	add_aristoteles_to_lst(t_aristoteles **aristoteles,
 		(*aristoteles) = new_aristoteles;
 	else
 	{
-		while (loking_for)
+		while (loking_for->right)
 			loking_for = loking_for->right;
 		loking_for->right = new_aristoteles;
 	}
