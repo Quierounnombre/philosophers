@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 15:44:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/09 12:06:48 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/09 12:48:03 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void		teach_aristoteles(t_spinoza *spinoza,
 					t_aristoteles *aristoteles, int new_id);
 static void		add_aristoteles_to_lst(t_aristoteles **aristoteles,
 					t_aristoteles *new_aristoteles);
+static void		close_the_circle(t_aristoteles *aristoteles);
 
 /*
 @par Platón es una las mentes más importantes de occidente, discipulo de
@@ -47,7 +48,8 @@ t_bool	plato(t_spinoza *spinoza, t_aristoteles **aristoteles)
 		add_aristoteles_to_lst(aristoteles, local_aristoteles);
 		n_aris--;
 	}
-	(*aristoteles)->right = local_aristoteles;
+	close_the_circle(local_aristoteles);
+	(*aristoteles) = local_aristoteles;
 	return (true);
 }
 
@@ -94,4 +96,15 @@ static void	add_aristoteles_to_lst(t_aristoteles **aristoteles,
 			loking_for = loking_for->right;
 		loking_for->right = new_aristoteles;
 	}
+}
+
+//Cierra el circulo de aristoteles
+static void	close_the_circle(t_aristoteles *aristoteles)
+{
+	t_aristoteles	*loking_for;
+
+	loking_for = aristoteles;
+	while (loking_for->right)
+		loking_for = loking_for->right;
+	loking_for->right = aristoteles;
 }
