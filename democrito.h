@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:43:11 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/06 15:37:39 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/10 17:03:10 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,10 @@ fue el maestro de alejandro magno y es reconocido por multiples aportaciones
 a numerosas disciplinas.
 
 @brief Estructura creada para cada filosofo
-@param id Es el identificador
+@param id Es el identificador del aristoteles
 @param spinoza es la estructura general del philo
 @param has_fork mide si el filosofo tiene el tenedor o no
+@param pthread	es la estructura que controla el 
 @param right es el filosofo que tiene a su derecha.
 */
 typedef struct s_aristoteles
@@ -76,6 +77,7 @@ typedef struct s_aristoteles
 	int						id;
 	t_spinoza				spinoza;
 	t_bool					has_fork;
+	pthread_t				thread;
 	struct s_aristoteles	*right;
 }			t_aristoteles;
 

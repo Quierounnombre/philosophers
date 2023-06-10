@@ -26,6 +26,8 @@ FILES_PHILO = 	Affinius \
 				diogenes \
 				Tales_de_mileto \
 				plato \
+				Heraclito \
+				pitagoras \
 
 DIR_PHILO = ./
 SRCS_PHILO = $(addprefix $(DIR_PHILO), $(addsuffix .c, $(FILES_PHILO)))

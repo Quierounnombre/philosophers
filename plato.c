@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 15:44:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/09 12:48:03 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/10 17:21:46 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static t_bool	free_error(t_aristoteles **aristoteles);
 static void		teach_aristoteles(t_spinoza *spinoza,
-					t_aristoteles *aristoteles, int new_id);
+					t_aristoteles *aristoteles);
 static void		add_aristoteles_to_lst(t_aristoteles **aristoteles,
 					t_aristoteles *new_aristoteles);
 static void		close_the_circle(t_aristoteles *aristoteles);
@@ -44,7 +44,7 @@ t_bool	plato(t_spinoza *spinoza, t_aristoteles **aristoteles)
 		local_aristoteles = (t_aristoteles *)malloc(sizeof(t_aristoteles));
 		if (!local_aristoteles)
 			return (free_error(aristoteles));
-		teach_aristoteles(spinoza, local_aristoteles, -1);
+		teach_aristoteles(spinoza, local_aristoteles);
 		add_aristoteles_to_lst(aristoteles, local_aristoteles);
 		n_aris--;
 	}
@@ -54,13 +54,16 @@ t_bool	plato(t_spinoza *spinoza, t_aristoteles **aristoteles)
 }
 
 //Carga a aristoteles con las cosas necesarias
-static void	teach_aristoteles(t_spinoza *spinoza, t_aristoteles *aristoteles,
-	int new_id)
+static void	teach_aristoteles(t_spinoza *spinoza, t_aristoteles *aristoteles)
 {
+	static int	new_id;
+
 	aristoteles->id = new_id;
 	aristoteles->spinoza = *spinoza;
 	aristoteles->right = NULL;
+	aristoteles->thread = 0;
 	aristoteles->has_fork = true;
+	new_id++;
 }
 
 //En caso de que malloc falle libera todo
