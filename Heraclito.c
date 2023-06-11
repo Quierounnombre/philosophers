@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:15:49 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/11 19:17:11 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:20:26 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	*heraclito(void *ptr)
 	{
 		if (aristoteles->id % 2 == 0)
 		{
-			while (!(aristoteles->has_fork))
+			while (!(aristoteles->has_fork) && !(aristoteles->right->has_fork))
 			{}
 			ft_eat(aristoteles);
 			ft_sleep(aristoteles);
@@ -47,7 +47,7 @@ void	*heraclito(void *ptr)
 		}
 		else
 		{
-			while (!(aristoteles->has_fork))
+			while (!(aristoteles->has_fork) && !(aristoteles->right->has_fork))
 				{}
 			ft_eat(aristoteles);
 			ft_sleep(aristoteles);
