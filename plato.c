@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 15:44:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/10 17:21:46 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/11 14:23:08 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,7 @@ t_bool	plato(t_spinoza *spinoza, t_aristoteles **aristoteles)
 		add_aristoteles_to_lst(aristoteles, local_aristoteles);
 		n_aris--;
 	}
-	close_the_circle(local_aristoteles);
-	(*aristoteles) = local_aristoteles;
+	close_the_circle(*aristoteles);
 	return (true);
 }
 

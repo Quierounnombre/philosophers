@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:36:54 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/10 17:21:57 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/11 13:59:41 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,17 @@ la escuela que monto en base a esta visión general.
 void	pitagoras(t_aristoteles *aristoteles)
 {
 	t_aristoteles	*ptr;
-	pthread_t		new_thread;
 	int				start_id;
 
 	ptr = aristoteles;
 	start_id = aristoteles->id;
-	make_thread(&new_thread, ptr);
+	make_thread(&(ptr->thread), ptr);
 	if (ptr->right && ptr->right != ptr)
 	{
 		ptr = ptr->right;
 		while (start_id != ptr->id)
 		{
-			make_thread(&new_thread, ptr);
+			make_thread(&(ptr->thread), ptr);
 			ptr = ptr->right;
 		}
 	}
@@ -50,6 +49,4 @@ void	pitagoras(t_aristoteles *aristoteles)
 static void	make_thread(pthread_t *new_thread, t_aristoteles *ptr)
 {
 	pthread_create(new_thread, NULL, heraclito, ptr);
-	ptr->thread = *new_thread;
-	*new_thread = 0;
 }

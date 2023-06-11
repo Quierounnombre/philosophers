@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:39:34 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/10 17:22:33 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/11 14:22:31 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	*heraclito(void *ptr);
 void	pitagoras(t_aristoteles *aristoteles);
 
 //UTILS
+void	ft_log(int philo, int action);
 char	*ft_itoa(int c);
 size_t	ft_strlen(const char *s);
 int		ft_atoi(const char *str);

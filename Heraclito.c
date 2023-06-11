@@ -6,11 +6,15 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:15:49 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/10 17:23:16 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/11 14:45:53 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "laplace.h"
+
+static void		ft_think(t_aristoteles *aristoteles);
+static void		ft_eat(t_aristoteles *aristoteles);
+static void		ft_sleep(t_aristoteles *aristoteles);
 
 /*
 @par
@@ -31,6 +35,48 @@ void	*heraclito(void *ptr)
 	t_aristoteles	*aristoteles;
 
 	aristoteles = ptr;
-	usleep(aristoteles->spinoza.time_to_die * 1000);
+	while (aristoteles->spinoza.meals)
+	{
+	if (aristoteles->id % 2 == 0)
+		{
+			ft_eat(aristoteles);
+			ft_sleep(aristoteles);
+			ft_think(aristoteles);
+		}
+		else
+		{
+			usleep(aristoteles->spinoza.time_to_eat * 1000);
+			ft_eat(aristoteles);
+			ft_sleep(aristoteles);
+			ft_think(aristoteles);
+		}
+		if (aristoteles->spinoza.meals > 0)
+			aristoteles->spinoza.meals = aristoteles->spinoza.meals - 1;
+	}
 	return (NULL);
+}
+
+//El philo devora el plato de comida
+static void		ft_eat(t_aristoteles *aristoteles)
+{
+	aristoteles->right->has_fork = false;
+	ft_log(aristoteles->id, 1);
+	aristoteles->has_fork = false;
+	ft_log(aristoteles->id, 2);
+	usleep(aristoteles->spinoza.time_to_die * 1000);
+}
+
+//El philo espera pacientemente a la comida
+static void		ft_think(t_aristoteles *aristoteles)
+{
+	ft_log(aristoteles->id, 4);
+}
+
+//El philo entra en modo reposo
+static void		ft_sleep(t_aristoteles *aristoteles)
+{
+	aristoteles->has_fork = true;
+	aristoteles->right->has_fork = true;
+	ft_log(aristoteles->id, 3);
+	usleep(aristoteles->spinoza.time_to_sleep * 1000);
 }

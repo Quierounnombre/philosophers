@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:38:01 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/05 14:45:32 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/11 14:44:28 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ t_bool	diogenes(int argc, char **argv, t_spinoza *spinoza)
 	spinoza->time_to_sleep = ft_atoi(argv[4]);
 	if (argc == MAX_ARGCS)
 		spinoza->meals = ft_atoi(argv[5]);
+	else
+		spinoza->meals = -1;
 	return (true);
 }
 
