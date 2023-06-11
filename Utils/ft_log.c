@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 14:15:13 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/11 15:05:14 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:14:04 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ Gestiona todo el output por consola del philosophers,
 */
 void	ft_log(int philo, int action)
 {
-	char	*s;
+	char			*s;
+	unsigned long	time;
 
+	time = kant();
 	if (action == 1)
 		s = "\033[0;31mhas taken a fork\033[0m";
 	if (action == 2)
@@ -39,5 +41,5 @@ void	ft_log(int philo, int action)
 		s = "\033[0;34mis thinking\033[0m";
 	if (action == 5)
 		s = "died";
-	printf("%d %s\n", philo, s);
+	printf("\033[0;30m%ld\033[0m %d %s\n", time, philo, s);
 }

@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:39:34 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/11 14:22:31 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:02:09 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,26 @@ presente y futuro serían claros a su intelecto, no notando diferencia entre
 ellos.
 */
 # include <stdio.h>
+# include <sys/time.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <pthread.h>
 # include "democrito.h"
 
 //philo
-t_bool	affinius(t_spinoza **spinoza);
-t_bool	diogenes(int argc, char **argv, t_spinoza *spinoza);
-t_bool	plato(t_spinoza *spinoza, t_aristoteles **aristoteles);
-void	*heraclito(void *ptr);
-void	pitagoras(t_aristoteles *aristoteles);
+t_bool			affinius(t_spinoza **spinoza);
+t_bool			diogenes(int argc, char **argv, t_spinoza *spinoza);
+t_bool			plato(t_spinoza *spinoza, t_aristoteles **aristoteles);
+void			*heraclito(void *ptr);
+void			pitagoras(t_aristoteles *aristoteles);
 
 //UTILS
-void	ft_log(int philo, int action);
-char	*ft_itoa(int c);
-size_t	ft_strlen(const char *s);
-int		ft_atoi(const char *str);
-char	*ft_strdup(const char *s1);
-t_bool	print_error_msg(char *error);
+void			ft_log(int philo, int action);
+char			*ft_itoa(int c);
+size_t			ft_strlen(const char *s);
+int				ft_atoi(const char *str);
+char			*ft_strdup(const char *s1);
+t_bool			print_error_msg(char *error);
+unsigned long	kant(void);
 
 #endif

@@ -27,6 +27,7 @@ FILES_PHILO = 	Affinius \
 				Tales_de_mileto \
 				plato \
 				Heraclito \
+				kant \
 				pitagoras \
 
 DIR_PHILO = ./
