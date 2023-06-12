@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 18:38:41 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/11 19:02:24 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/12 16:48:05 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ resulto estar en lo cierto.
 */
 unsigned long	kant(void)
 {
-	struct timeval 			tv;
+	struct timeval			tv;
 	static unsigned long	old_time;
 
 	if (!(gettimeofday(&tv, NULL)))

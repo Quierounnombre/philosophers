@@ -45,8 +45,17 @@ DIR_UTILS = ./Utils/
 SRCS_UTILS = $(addprefix $(DIR_UTILS), $(addsuffix .c, $(FILES_UTILS)))
 OBJS_UTILS = $(addprefix $(DIR_UTILS), $(addsuffix .o, $(FILES_UTILS)))
 
-SRCS = $(SRCS_PHILO) $(SRCS_UTILS)
-OBJS = $(OBJS_PHILO) $(OBJS_UTILS)
+FILES_ACTIONS =	ft_eat \
+				ft_parlor_whit_dead \
+				ft_sleep \
+				ft_think \
+
+DIR_ACTIONS = ./Actions/
+SRCS_ACTIONS = $(addprefix $(DIR_ACTIONS), $(addsuffix .c, $(FILES_ACTIONS)))
+OBJS_ACTIONS = $(addprefix $(DIR_ACTIONS), $(addsuffix .o, $(FILES_ACTIONS)))
+
+SRCS = $(SRCS_PHILO) $(SRCS_UTILS) $(SRCS_ACTIONS)
+OBJS = $(OBJS_PHILO) $(OBJS_UTILS) $(OBJS_ACTIONS)
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)

@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 15:44:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/11 14:23:08 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/12 15:40:39 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static void	teach_aristoteles(t_spinoza *spinoza, t_aristoteles *aristoteles)
 	aristoteles->right = NULL;
 	aristoteles->thread = 0;
 	aristoteles->has_fork = true;
+	aristoteles->t_last_meal = 0;
 	new_id++;
 }
 

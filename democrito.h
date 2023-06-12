@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:43:11 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/10 17:03:10 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/12 16:29:35 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ a numerosas disciplinas.
 @param id Es el identificador del aristoteles
 @param spinoza es la estructura general del philo
 @param has_fork mide si el filosofo tiene el tenedor o no
-@param pthread	es la estructura que controla el 
+@param pthread	es el identificador del theread
+@param t_last_meal es el tiempo desde que termino su ultima comida
 @param right es el filosofo que tiene a su derecha.
 */
 typedef struct s_aristoteles
@@ -78,6 +79,7 @@ typedef struct s_aristoteles
 	t_spinoza				spinoza;
 	t_bool					has_fork;
 	pthread_t				thread;
+	int						t_last_meal;
 	struct s_aristoteles	*right;
 }			t_aristoteles;
 
@@ -99,13 +101,17 @@ typedef struct s_aristoteles
 #  define ERROR_MSG_INCORRECT_PARSE "\n\n\
 Los argumentos entán mal formateados,\
 tienen que estar en formato numerico entero,\n\
-ej: '0' '1' '41' etc, distribuidos \
+ej: '4' '1000' '1000' '1000' ('5') etc, distribuidos \
 de esta manera:\n\
 numero de filosofos\n\
 tiempo hasta su muerte(en ms)\n\
 tiempo para comer(en ms)\n\
 tiempo para dormir(en ms)\n\
 (OPCIONAL)Numero de comidas\n\n\n"
+# endif
+
+# ifndef US_TO_MS
+#  define US_TO_MS 1000
 # endif
 
 #endif
