@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:15:49 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/12 16:43:44 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/18 01:20:44 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	*heraclito(void *ptr)
 		}
 		else
 		{
-			ft_eat(aristoteles);
 			ft_think(aristoteles);
+			ft_eat(aristoteles);
 			ft_sleep(aristoteles);
 		}
 		if (aristoteles->spinoza.meals > 0)
