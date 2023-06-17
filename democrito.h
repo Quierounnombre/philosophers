@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:43:11 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/12 16:29:35 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/18 01:05:22 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,10 @@ tiempo para dormir(en ms)\n\
 
 # ifndef US_TO_MS
 #  define US_TO_MS 1000
+# endif
+
+# ifndef T_PROGRES
+#  define T_PROGRES 25
 # endif
 
 #endif

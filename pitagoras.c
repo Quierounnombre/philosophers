@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:36:54 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/11 13:59:41 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/18 00:40:53 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	pitagoras(t_aristoteles *aristoteles)
 
 	ptr = aristoteles;
 	start_id = aristoteles->id;
+	kant();
 	make_thread(&(ptr->thread), ptr);
 	if (ptr->right && ptr->right != ptr)
 	{
