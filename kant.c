@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 18:38:41 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/12 16:58:46 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/19 15:30:52 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static unsigned long	ft_calc_time(void);
 
 /*
 @par
-KANT Or can i?
+KANT Or kan i?
 
 Fue un filosofo prusiano, desarrollador del criticismo(no el del cuñao del
 bar ese todo sabemos que fue manolo. . .), esta corriente filosofica se basa

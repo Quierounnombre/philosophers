@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 15:44:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/12 15:40:39 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/19 17:57:00 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ t_bool	plato(t_spinoza *spinoza, t_aristoteles **aristoteles)
 		local_aristoteles = (t_aristoteles *)malloc(sizeof(t_aristoteles));
 		if (!local_aristoteles)
 			return (free_error(aristoteles));
+		if (pthread_mutex_init(&(local_aristoteles->mutex), NULL))
+			return (free_error(aristoteles));
 		teach_aristoteles(spinoza, local_aristoteles);
 		add_aristoteles_to_lst(aristoteles, local_aristoteles);
 		n_aris--;
@@ -76,6 +78,8 @@ static t_bool	free_error(t_aristoteles **aristoteles)
 	next_aris = NULL;
 	while (local_aris)
 	{
+		if (local_aris->right)
+			pthread_mutex_destroy(&(local_aris->mutex));
 		if (local_aris->right)
 			next_aris = local_aris->right;
 		free(local_aris);

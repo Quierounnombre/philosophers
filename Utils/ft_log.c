@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 14:15:13 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/18 00:42:37 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/19 14:31:58 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ void	ft_log(int philo, int action)
 		s = "\033[0;34mis thinking\033[0m";
 	if (action == 5)
 		s = "died";
-	printf("\033[0;30m%ld\033[0m %d %s\n", kant(), philo, s);
+	printf("\033[0;36m%ld\033[0m %d %s\n", kant(), philo, s);
 }

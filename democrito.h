@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:43:11 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/18 01:19:38 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/19 14:57:17 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ a numerosas disciplinas.
 @param has_fork mide si el filosofo tiene el tenedor o no
 @param pthread	es el identificador del theread
 @param t_last_meal es el tiempo desde que termino su ultima comida
+@param mutex mutex del filosofo
 @param right es el filosofo que tiene a su derecha.
 */
 typedef struct s_aristoteles
@@ -80,6 +81,7 @@ typedef struct s_aristoteles
 	t_bool					has_fork;
 	pthread_t				thread;
 	int						t_last_meal;
+	pthread_mutex_t			mutex;
 	struct s_aristoteles	*right;
 }			t_aristoteles;
 

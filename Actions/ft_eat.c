@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/12 16:26:35 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/18 01:22:31 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/06/19 17:26:18 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/06/19 17:47:43 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,11 @@ void	ft_eat(t_aristoteles *aris)
 {
 	int	time;
 
-	while (!(aris->has_fork) && !(aris->right->has_fork))
-		ft_parlor_whit_dead(aris);
 	time = 0;
-	aris->right->has_fork = false;
+	pthread_mutex_lock(&(aris->mutex));
 	ft_log(aris->id, 1);
 	aris->has_fork = false;
+	aris->right->has_fork = false;
 	ft_log(aris->id, 2);
 	while (time + T_PROGRES < aris->spinoza.time_to_eat)
 	{
