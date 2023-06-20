@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:26:18 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/20 14:18:56 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/20 14:36:36 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,15 @@ void	ft_eat(t_aristoteles *aris)
 	int	time;
 
 	time = 0;
-	pthread_mutex_lock(&(aris->right->fork));
+	if (aris->id % 2)
+		pthread_mutex_lock(&(aris->right->fork));
+	else
+		pthread_mutex_lock(&(aris->fork));
 	ft_log(aris->id, 1);
-	pthread_mutex_lock(&(aris->fork));
+	if (aris->id % 2)
+		pthread_mutex_lock(&(aris->fork));
+	else
+		pthread_mutex_lock(&(aris->right->fork));
 	ft_log(aris->id, 1);
 	ft_log(aris->id, 2);
 	while (time + T_PROGRES < aris->spinoza.time_to_eat)
