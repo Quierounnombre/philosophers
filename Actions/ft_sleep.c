@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:29:53 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/19 17:32:22 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/20 14:12:20 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ void	ft_sleep(t_aristoteles *aris)
 {
 	int	sleep_time;
 
-	aris->right->has_fork = true;
-	aris->has_fork = true;
-	pthread_mutex_unlock(&(aris->mutex));
+	pthread_mutex_unlock(&(aris->fork));
+	pthread_mutex_unlock(&(aris->right->fork));
 	sleep_time = 0;
 	ft_log(aris->id, 3);
 	while (sleep_time < aris->spinoza.time_to_sleep)

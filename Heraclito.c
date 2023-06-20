@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:15:49 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/19 17:31:58 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/20 14:21:45 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,18 @@ void	*heraclito(void *ptr)
 	aristoteles = ptr;
 	while (aristoteles->spinoza.meals)
 	{
-		ft_eat(aristoteles);
-		ft_sleep(aristoteles);
-		ft_think(aristoteles);
+		if (aristoteles->spinoza.n_philos % 2 == 0)
+		{
+			ft_eat(aristoteles);
+			ft_sleep(aristoteles);
+			ft_think(aristoteles);
+		}
+		else
+		{
+			ft_think(aristoteles);
+			ft_sleep(aristoteles);
+			ft_eat(aristoteles);
+		}
 		if (aristoteles->spinoza.meals > 0)
 			aristoteles->spinoza.meals = aristoteles->spinoza.meals - 1;
 	}
