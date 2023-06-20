@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 16:37:47 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/19 17:59:40 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/20 17:39:37 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	tales_de_mileto(int argc, char **argv)
 			if (plato(spinoza, &aristoteles))
 			{
 				pitagoras(aristoteles);
-				while (1)
+				while (*(aristoteles->should_close))
 				{
 				}
 			}

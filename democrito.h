@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:43:11 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/20 14:16:43 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/20 16:49:00 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ a numerosas disciplinas.
 @param t_last_meal es el tiempo desde que termino su ultima comida
 @param fork mutex para el control de las comidas
 @param right es el filosofo que tiene a su derecha.
+@param should_close gestiona si el programa debería de cerrarse
 */
 typedef struct s_aristoteles
 {
@@ -81,6 +82,7 @@ typedef struct s_aristoteles
 	int						t_last_meal;
 	pthread_mutex_t			fork;
 	struct s_aristoteles	*right;
+	t_bool					*should_close;
 }			t_aristoteles;
 
 //------------------------------------------------------------------------------

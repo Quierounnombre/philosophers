@@ -6,15 +6,15 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 15:44:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/20 14:14:35 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/20 17:34:20 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "laplace.h"
 
-static t_bool	free_error(t_aristoteles **aristoteles);
+static t_bool	free_error(t_aristoteles **aristoteles, t_bool *close);
 static void		teach_aristoteles(t_spinoza *spinoza,
-					t_aristoteles *aristoteles);
+					t_aristoteles *aristoteles, t_bool *close);
 static void		add_aristoteles_to_lst(t_aristoteles **aristoteles,
 					t_aristoteles *new_aristoteles);
 static void		close_the_circle(t_aristoteles *aristoteles);
@@ -35,46 +35,56 @@ el primer elemento de la lista circular de los aristoteles
 t_bool	plato(t_spinoza *spinoza, t_aristoteles **aristoteles)
 {
 	t_aristoteles	*local_aristoteles;
+	t_bool			*close;
 	int				n_aris;
 
 	local_aristoteles = NULL;
 	n_aris = spinoza->n_philos;
-	while (n_aris)
+	close = malloc(sizeof(t_bool));
+	if (close)
 	{
-		local_aristoteles = (t_aristoteles *)malloc(sizeof(t_aristoteles));
-		if (!local_aristoteles)
-			return (free_error(aristoteles));
-		if (pthread_mutex_init(&(local_aristoteles->fork), NULL))
-			return (free_error(aristoteles));
-		teach_aristoteles(spinoza, local_aristoteles);
-		add_aristoteles_to_lst(aristoteles, local_aristoteles);
-		n_aris--;
+		*close = true;
+		while (n_aris)
+		{
+			local_aristoteles = (t_aristoteles *)malloc(sizeof(t_aristoteles));
+			if (!local_aristoteles)
+				return (free_error(aristoteles, close));
+			if (pthread_mutex_init(&(local_aristoteles->fork), NULL))
+				return (free_error(aristoteles, close));
+			teach_aristoteles(spinoza, local_aristoteles, close);
+			add_aristoteles_to_lst(aristoteles, local_aristoteles);
+			n_aris--;
+		}
+		free(close);
 	}
 	close_the_circle(*aristoteles);
 	return (true);
 }
 
 //Carga a aristoteles con las cosas necesarias
-static void	teach_aristoteles(t_spinoza *spinoza, t_aristoteles *aristoteles)
+static void	teach_aristoteles(t_spinoza *spinoza, t_aristoteles *aristoteles,
+t_bool *close)
 {
-	static int	new_id;
+	static int		new_id;
 
 	aristoteles->id = new_id;
 	aristoteles->spinoza = *spinoza;
 	aristoteles->right = NULL;
 	aristoteles->thread = 0;
 	aristoteles->t_last_meal = 0;
+	aristoteles->should_close = close;
 	new_id++;
 }
 
 //En caso de que malloc falle libera todo
-static t_bool	free_error(t_aristoteles **aristoteles)
+static t_bool	free_error(t_aristoteles **aristoteles, t_bool *close)
 {
 	t_aristoteles	*local_aris;
 	t_aristoteles	*next_aris;
 
 	local_aris = *aristoteles;
 	next_aris = NULL;
+	free(close);
 	while (local_aris)
 	{
 		if (local_aris->right)
