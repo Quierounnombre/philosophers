@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:26:18 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/20 16:53:24 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/21 14:19:49 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,12 @@ void	ft_eat(t_aristoteles *aris)
 		pthread_mutex_lock(&(aris->right->fork));
 	ft_log(aris->id, 1);
 	ft_log(aris->id, 2);
-	while (time < aris->spinoza.time_to_eat && aris->should_close)
+	while (time < aris->spinoza.time_to_eat && *(aris->should_close))
 	{
-		usleep(US_TO_MS);
-		time++;
+		if (ft_parlor_whit_dead(aris))
+			time++;
+		else
+			*(aris->should_close) = false;
 	}
 	aris->t_last_meal = 0;
 }

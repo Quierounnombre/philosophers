@@ -29,6 +29,7 @@ FILES_PHILO = 	Affinius \
 				Heraclito \
 				kant \
 				pitagoras \
+				schopenhauer \
 
 DIR_PHILO = ./
 SRCS_PHILO = $(addprefix $(DIR_PHILO), $(addsuffix .c, $(FILES_PHILO)))

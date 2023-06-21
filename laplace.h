@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:39:34 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/18 01:21:25 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:00:06 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ t_bool			diogenes(int argc, char **argv, t_spinoza *spinoza);
 t_bool			plato(t_spinoza *spinoza, t_aristoteles **aristoteles);
 void			*heraclito(void *ptr);
 void			pitagoras(t_aristoteles *aristoteles);
+void			schopenhauer(t_aristoteles *aris);
 
 //ACTIONS
 
