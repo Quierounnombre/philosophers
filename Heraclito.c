@@ -6,11 +6,13 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:15:49 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/20 17:27:34 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:55:49 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "laplace.h"
+
+void	flow(t_aristoteles *aristoteles);
 
 /*
 @par
@@ -32,23 +34,23 @@ void	*heraclito(void *ptr)
 
 	aristoteles = ptr;
 	pthread_join(aristoteles->thread, NULL);
-	if (aristoteles->id % 2 && aristoteles->should_close)
-	{
-		ft_eat(aristoteles);
-		ft_sleep(aristoteles);
-		ft_think(aristoteles);
-		if (aristoteles->spinoza.meals > 0)
-			aristoteles->spinoza.meals = aristoteles->spinoza.meals - 1;
-	}
+	if (aristoteles->id % 2 && *(aristoteles->should_close))
+		flow(aristoteles);
 	else
 		usleep(US_TO_MS);
-	while (aristoteles->spinoza.meals && aristoteles->should_close)
-	{
-		ft_eat(aristoteles);
-		ft_sleep(aristoteles);
-		ft_think(aristoteles);
-		if (aristoteles->spinoza.meals > 0)
-			aristoteles->spinoza.meals = aristoteles->spinoza.meals - 1;
-	}
+	while (aristoteles->spinoza.meals && *(aristoteles->should_close))
+		flow(aristoteles);
 	return (NULL);
+}
+
+void	flow(t_aristoteles *aristoteles)
+{
+	if (*(aristoteles->should_close))
+		ft_eat(aristoteles);
+	if (*(aristoteles->should_close))
+		ft_sleep(aristoteles);
+	if (*(aristoteles->should_close))
+		ft_think(aristoteles);
+	if (aristoteles->spinoza.meals > 0)
+		aristoteles->spinoza.meals = aristoteles->spinoza.meals - 1;
 }
