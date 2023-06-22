@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:26:18 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/21 15:53:23 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/22 10:48:44 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_eat(t_aristoteles *aris)
 	while (time < aris->spinoza.time_to_eat && *(aris->should_close))
 	{
 		if (ft_parlor_whit_dead(aris))
-			time++;
+			time += T_PROGRES;
 		else
 			*(aris->should_close) = false;
 	}

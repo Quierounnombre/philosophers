@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:29:53 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/20 17:38:53 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/22 10:49:28 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_sleep(t_aristoteles *aris)
 	while (sleep_time < aris->spinoza.time_to_sleep && *(aris->should_close))
 	{
 		if (ft_parlor_whit_dead(aris))
-			sleep_time++;
+			sleep_time += T_PROGRES;
 		else
 			*(aris->should_close) = false;
 	}

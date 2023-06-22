@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:35:27 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/21 14:13:46 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/22 10:53:32 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ t_bool	ft_parlor_whit_dead(t_aristoteles *aristoteles)
 {
 	if (aristoteles->t_last_meal < aristoteles->spinoza.time_to_die)
 	{
-		usleep(US_TO_MS);
-		aristoteles->t_last_meal++;
+		usleep(US_TO_MS * T_PROGRES);
+		aristoteles->t_last_meal += T_PROGRES;
 		return (true);
 	}
 	ft_log(aristoteles->id, 5);
