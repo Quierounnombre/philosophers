@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 18:38:41 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/22 10:48:12 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/22 16:57:24 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ hasta ahora
 */
 unsigned long	kant(void)
 {
-	static unsigned long	old_time;
+	static _Atomic unsigned long	old_time;
 
 	if (!old_time)
 		old_time = ft_calc_time();

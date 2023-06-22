@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:36:54 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/22 10:41:21 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/22 17:20:47 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,5 @@ void	pitagoras(t_aristoteles *aristoteles)
 static void	make_thread(pthread_t *new_thread, t_aristoteles *ptr)
 {
 	pthread_create(new_thread, NULL, heraclito, ptr);
+	pthread_join(*new_thread, NULL);
 }

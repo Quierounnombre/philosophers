@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:43:11 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/22 16:13:58 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/22 17:15:44 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ typedef struct s_spinoza
 	int		meals;
 }			t_spinoza;
 
+typedef _Atomic int	t_p_int;
+
 /*
 @par aristoteles fue un discipulo de platón, a diferencia de su maestro el
 coloco la experiencia como la fuente de conocimiento predilecta, esto se ve
@@ -82,7 +84,7 @@ typedef struct s_aristoteles
 	int						t_last_meal;
 	pthread_mutex_t			fork;
 	struct s_aristoteles	*right;
-	t_bool					*should_close;
+	t_p_int					*should_close;
 }			t_aristoteles;
 
 //------------------------------------------------------------------------------

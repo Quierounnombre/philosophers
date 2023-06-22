@@ -6,15 +6,15 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 15:44:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/20 17:34:20 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/22 17:15:13 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "laplace.h"
 
-static t_bool	free_error(t_aristoteles **aristoteles, t_bool *close);
+static t_bool	free_error(t_aristoteles **aristoteles, t_p_int *close);
 static void		teach_aristoteles(t_spinoza *spinoza,
-					t_aristoteles *aristoteles, t_bool *close);
+					t_aristoteles *aristoteles, t_p_int *close);
 static void		add_aristoteles_to_lst(t_aristoteles **aristoteles,
 					t_aristoteles *new_aristoteles);
 static void		close_the_circle(t_aristoteles *aristoteles);
@@ -35,12 +35,12 @@ el primer elemento de la lista circular de los aristoteles
 t_bool	plato(t_spinoza *spinoza, t_aristoteles **aristoteles)
 {
 	t_aristoteles	*local_aristoteles;
-	t_bool			*close;
+	t_p_int			*close;
 	int				n_aris;
 
 	local_aristoteles = NULL;
 	n_aris = spinoza->n_philos;
-	close = malloc(sizeof(t_bool));
+	close = malloc(sizeof(t_p_int));
 	if (close)
 	{
 		*close = true;
@@ -63,7 +63,7 @@ t_bool	plato(t_spinoza *spinoza, t_aristoteles **aristoteles)
 
 //Carga a aristoteles con las cosas necesarias
 static void	teach_aristoteles(t_spinoza *spinoza, t_aristoteles *aristoteles,
-t_bool *close)
+t_p_int *close)
 {
 	static int		new_id;
 
@@ -77,7 +77,7 @@ t_bool *close)
 }
 
 //En caso de que malloc falle libera todo
-static t_bool	free_error(t_aristoteles **aristoteles, t_bool *close)
+static t_bool	free_error(t_aristoteles **aristoteles, t_p_int *close)
 {
 	t_aristoteles	*local_aris;
 	t_aristoteles	*next_aris;

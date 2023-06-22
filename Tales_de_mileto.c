@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 16:37:47 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/21 15:06:16 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/22 17:08:15 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ static void	tales_de_mileto(int argc, char **argv)
 				while (*(aristoteles->should_close))
 				{
 				}
+				usleep(US_TO_MS);
+				free(aristoteles->should_close);
 				schopenhauer(aristoteles);
 			}
 		}
