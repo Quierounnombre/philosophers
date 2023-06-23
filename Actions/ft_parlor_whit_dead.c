@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:35:27 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/22 16:14:08 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/23 16:12:49 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	ft_usleep(unsigned long wait_time)
 	{
 		while (time < wait_time)
 		{
-			usleep(10);
+			usleep(100);
 			time = ft_calc_time(tv) - ft_calc_time(tv_init);
 			if (gettimeofday(&tv, NULL))
 				break ;

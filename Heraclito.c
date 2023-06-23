@@ -6,13 +6,14 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:15:49 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/22 10:45:48 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/23 16:58:19 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "laplace.h"
 
-void	flow(t_aristoteles *aristoteles);
+static void	flow(t_aristoteles *aristoteles);
+static void	wait_for_turn(t_aristoteles *aristoteles);
 
 /*
 @par
@@ -36,16 +37,14 @@ void	*heraclito(void *ptr)
 	if (aristoteles->id % 2 && *(aristoteles->should_close))
 		flow(aristoteles);
 	else
-	{
-		if (!ft_parlor_whit_dead(aristoteles))
-			*(aristoteles->should_close) = false;
-	}
+		wait_for_turn(aristoteles);
 	while (aristoteles->spinoza.meals && *(aristoteles->should_close))
 		flow(aristoteles);
+	usleep(US_TO_MS);
 	return (NULL);
 }
 
-void	flow(t_aristoteles *aristoteles)
+static void	flow(t_aristoteles *aristoteles)
 {
 	if (*(aristoteles->should_close))
 		ft_eat(aristoteles);
@@ -53,6 +52,26 @@ void	flow(t_aristoteles *aristoteles)
 		ft_sleep(aristoteles);
 	if (*(aristoteles->should_close))
 		ft_think(aristoteles);
-	if (aristoteles->spinoza.meals > 0)
+	if (aristoteles->spinoza.meals > 0 && *(aristoteles->should_close))
 		aristoteles->spinoza.meals = aristoteles->spinoza.meals - 1;
+}
+
+static void	wait_for_turn(t_aristoteles *aristoteles)
+{
+	int	time;
+
+	time = 0;
+	while (ft_parlor_whit_dead(aristoteles)
+		&& time < aristoteles->spinoza.time_to_eat)
+		time += T_PROGRES;
+	if (aristoteles->spinoza.n_philos % 2
+		&& aristoteles->id == aristoteles->spinoza.n_philos - 1)
+	{
+		time = 0;
+		while (ft_parlor_whit_dead(aristoteles)
+			&& time < aristoteles->spinoza.time_to_eat)
+			time += T_PROGRES;
+		if (aristoteles->t_last_meal > aristoteles->spinoza.time_to_die)
+			*(aristoteles->should_close) = false;
+	}
 }

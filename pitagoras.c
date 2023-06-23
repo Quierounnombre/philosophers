@@ -6,14 +6,13 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:36:54 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/23 15:38:10 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/23 16:35:36 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "laplace.h"
 
 static void	make_thread(pthread_t *new_thread, t_aristoteles *ptr);
-static void	make_join(t_aristoteles *aris);
 
 /*
 @par
@@ -44,28 +43,11 @@ void	pitagoras(t_aristoteles *aristoteles)
 			ptr = ptr->right;
 		}
 	}
-	make_join(aristoteles);
 }
 
 //Make a thread and store it in aristoteles
 static void	make_thread(pthread_t *new_thread, t_aristoteles *ptr)
 {
 	pthread_create(new_thread, NULL, heraclito, ptr);
-}
-
-//Make a join of all the threads
-static void	make_join(t_aristoteles *aris)
-{
-	t_aristoteles	*ptr;
-
-	if (aris->spinoza.n_philos > 1)
-	{
-		ptr = aris->right;
-		while (aris != ptr)
-		{
-			pthread_join(ptr->thread, NULL);
-			ptr = ptr->right;
-		}
-	}
-	pthread_join(aris->thread, NULL);
+	pthread_detach(*new_thread);
 }

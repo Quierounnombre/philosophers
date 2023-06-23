@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:29:53 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/22 10:49:28 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/23 16:20:35 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ void	ft_sleep(t_aristoteles *aris)
 		if (ft_parlor_whit_dead(aris))
 			sleep_time += T_PROGRES;
 		else
+		{
 			*(aris->should_close) = false;
+			return ;
+		}
 	}
 }
