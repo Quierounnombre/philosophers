@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:26:18 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/22 16:10:44 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/23 15:40:26 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ general
 */
 void	ft_eat(t_aristoteles *aris)
 {
-	int	time;
+	int		time;
 
 	time = 0;
-	if (aris->id % 2)
+	if (aris->id % 2 && *(aris->should_close))
 		pthread_mutex_lock(&(aris->right->fork));
-	else
+	else if (*(aris->should_close))
 		pthread_mutex_lock(&(aris->fork));
 	ft_log(aris->id, 1);
-	if (aris->id % 2)
+	if (aris->id % 2 && *(aris->should_close))
 		pthread_mutex_lock(&(aris->fork));
-	else
+	else if (*(aris->should_close))
 		pthread_mutex_lock(&(aris->right->fork));
 	ft_log(aris->id, 1);
 	ft_log(aris->id, 2);
