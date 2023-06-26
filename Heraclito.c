@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:15:49 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/26 11:24:38 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/26 12:02:38 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ void	*heraclito(void *ptr)
 			flow(aristoteles);
 	}
 	usleep(US_TO_MS);
+	pthread_mutex_destroy(&(aristoteles->fork));
+	pthread_join(aristoteles->thread, NULL);
+	free(aristoteles);
 	return (NULL);
 }
 
@@ -57,10 +60,7 @@ static void	flow(t_aristoteles *aristoteles)
 	if (*(aristoteles->should_close))
 		ft_sleep(aristoteles);
 	if (*(aristoteles->should_close))
-	{
 		ft_think(aristoteles);
-		//wait_for_turn(aristoteles);
-	}
 	if (aristoteles->spinoza.meals > 0 && *(aristoteles->should_close))
 		aristoteles->spinoza.meals = aristoteles->spinoza.meals - 1;
 }

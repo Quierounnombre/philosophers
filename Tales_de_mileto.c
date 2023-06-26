@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 16:37:47 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/26 11:15:12 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/26 12:05:31 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,9 @@ static void	tales_de_mileto(int argc, char **argv)
 	}
 }
 
+
 int	main(int argc, char **argv)
 {
 	tales_de_mileto(argc, argv);
-	//system("leaks philo");
 }
+	//system("leaks philo");
