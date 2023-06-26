@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 16:37:47 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/26 12:24:27 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/26 12:27:29 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ static void	tales_de_mileto(int argc, char **argv)
 		free(spinoza);
 	}
 }
-
 
 int	main(int argc, char **argv)
 {
