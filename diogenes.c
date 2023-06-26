@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:38:01 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/11 14:44:28 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/26 12:41:09 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static t_bool	parse_argc(const char **argv);
 static t_bool	check_overflow(const char *argv);
+static t_bool	check_for_cero(t_spinoza *sp, int argc);
 
 /*
 @par diogenes se caracteriza por su peculiar vida y filosofia, es uno de los
@@ -47,7 +48,9 @@ t_bool	diogenes(int argc, char **argv, t_spinoza *spinoza)
 		spinoza->meals = ft_atoi(argv[5]);
 	else
 		spinoza->meals = -1;
-	return (true);
+	if (check_for_cero(spinoza, argc))
+		return (true);
+	return (false);
 }
 
 //------------------------------------------------------------------------
@@ -92,4 +95,22 @@ static t_bool	check_overflow(const char *argv)
 		free(s);
 	}	
 	return (false);
+}
+
+//-------------------------------------------------------------------------
+
+static t_bool	check_for_cero(t_spinoza *sp, int argc)
+{
+	if (MAX_ARGCS == argc)
+		if (!(sp->meals))
+			return (false);
+	if (!(sp->n_philos))
+		return (false);
+	if (!(sp->time_to_die))
+		return (false);
+	if (!(sp->time_to_eat))
+		return (false);
+	if (!(sp->time_to_sleep))
+		return ((false));
+	return (true);
 }

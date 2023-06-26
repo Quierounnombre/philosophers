@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:43:11 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/22 17:15:44 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/26 12:29:38 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ typedef struct s_aristoteles
 # ifndef ERROR_MSG_INCORRECT_PARSE
 #  define ERROR_MSG_INCORRECT_PARSE "\n\n\
 Los argumentos entán mal formateados,\
-tienen que estar en formato numerico entero,\n\
+tienen que estar en formato numerico entero(POSITIVO),\n\
 ej: '4' '1000' '1000' '1000' ('5') etc, distribuidos \
 de esta manera:\n\
 numero de filosofos\n\

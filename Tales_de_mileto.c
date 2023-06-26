@@ -6,11 +6,13 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 16:37:47 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/26 12:27:29 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/26 12:46:107 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "laplace.h"
+
+static t_bool	check_meals(t_aristoteles *aris);
 
 /*
 @par Tales de mileto esta considerado el primer filosofo documentado en la
@@ -36,7 +38,7 @@ static void	tales_de_mileto(int argc, char **argv)
 			if (plato(spinoza, &aristoteles))
 			{
 				pitagoras(aristoteles);
-				while (*(aristoteles->should_close))
+				while (*(aristoteles->should_close) && check_meals(aristoteles))
 				{
 				}
 				usleep(US_TO_MS);
@@ -46,6 +48,28 @@ static void	tales_de_mileto(int argc, char **argv)
 		}
 		free(spinoza);
 	}
+}
+
+static t_bool	check_meals(t_aristoteles *aris)
+{
+	t_aristoteles	*ptr;
+
+	ptr = aris;
+	if (aris->spinoza.n_philos > 1)
+	{
+		if (ptr->spinoza.meals)
+			return (true);
+		ptr = ptr->right;
+		while (ptr != aris)
+		{
+			if (ptr->spinoza.meals)
+				return (true);
+			ptr = ptr->right;
+		}
+	}
+	else
+		return (true);
+	return (false);
 }
 
 int	main(int argc, char **argv)
