@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 16:37:47 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/26 12:46:107 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/26 16:10:12 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,27 @@ sea dificil atribuirle correctamente todos sus hallazgos
 static void	tales_de_mileto(int argc, char **argv)
 {
 	t_spinoza		*spinoza;
-	t_aristoteles	*aristoteles;
+	pthread_mutex_t	write;
+	t_aristoteles	*aris;
 
 	spinoza = NULL;
-	aristoteles = NULL;
+	aris = NULL;
 	if (affinius(&spinoza))
 	{
-		if (diogenes(argc, argv, spinoza))
+		if (!pthread_mutex_init(&write, NULL))
 		{
-			if (plato(spinoza, &aristoteles))
+			if (diogenes(argc, argv, spinoza))
 			{
-				pitagoras(aristoteles);
-				while (*(aristoteles->should_close) && check_meals(aristoteles))
+				if (plato(spinoza, &aris, &write))
 				{
+					pitagoras(aris);
+					while (*(aris->should_close) && check_meals(aris))
+					{
+					}
+					free(aris->should_close);
 				}
-				usleep(US_TO_MS);
-				free(aristoteles->should_close);
-				schopenhauer(aristoteles);
 			}
+			pthread_mutex_destroy(&write);
 		}
 		free(spinoza);
 	}
@@ -72,8 +75,16 @@ static t_bool	check_meals(t_aristoteles *aris)
 	return (false);
 }
 
+/*
+static void	leaks(void)
+{
+	system("leaks -q philo");
+}
+*/
+
 int	main(int argc, char **argv)
 {
 	tales_de_mileto(argc, argv);
 }
-	//system("leaks philo");
+
+	//atexit(leaks);

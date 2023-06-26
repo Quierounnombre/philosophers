@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:26:18 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/26 11:28:22 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/26 16:05:53 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_eat(t_aristoteles *aris)
 	time = 0;
 	take_a_fork(aris);
 	if (*(aris->should_close))
-		ft_log(aris->id, 2);
+		ft_log_mutex(aris->id, 2, aris->write);
 	while (time < aris->spinoza.time_to_eat && *(aris->should_close))
 	{
 		if (ft_parlor_whit_dead(aris))
@@ -53,7 +53,8 @@ static void	take_a_fork(t_aristoteles *aris)
 		pthread_mutex_unlock(&(aris->fork));
 		return ;
 	}
-	ft_log(aris->id, 1);
+	if (*(aris->should_close))
+		ft_log_mutex(aris->id, 1, aris->write);
 	if (aris->id % 2 && *(aris->should_close))
 		pthread_mutex_lock(&(aris->right->fork));
 	else if (*(aris->should_close))
@@ -63,5 +64,6 @@ static void	take_a_fork(t_aristoteles *aris)
 		pthread_mutex_unlock(&(aris->fork));
 		return ;
 	}
-	ft_log(aris->id, 1);
+	if (*(aris->should_close))
+		ft_log_mutex(aris->id, 1, aris->write);
 }

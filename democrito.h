@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:43:11 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/26 12:29:38 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/26 15:59:01 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ a numerosas disciplinas.
 @param fork mutex para el control de las comidas
 @param right es el filosofo que tiene a su derecha.
 @param should_close gestiona si el programa debería de cerrarse
+@param write controla el acceso a al log
 */
 typedef struct s_aristoteles
 {
@@ -85,6 +86,7 @@ typedef struct s_aristoteles
 	pthread_mutex_t			fork;
 	struct s_aristoteles	*right;
 	t_p_int					*should_close;
+	pthread_mutex_t			*write;
 }			t_aristoteles;
 
 //------------------------------------------------------------------------------

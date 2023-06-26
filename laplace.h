@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:39:34 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/21 15:00:06 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/26 16:03:24 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ ellos.
 
 t_bool			affinius(t_spinoza **spinoza);
 t_bool			diogenes(int argc, char **argv, t_spinoza *spinoza);
-t_bool			plato(t_spinoza *spinoza, t_aristoteles **aristoteles);
+t_bool			plato(t_spinoza *spinoza, t_aristoteles **aristoteles,
+					pthread_mutex_t *write);
 void			*heraclito(void *ptr);
 void			pitagoras(t_aristoteles *aristoteles);
 void			schopenhauer(t_aristoteles *aris);
@@ -59,5 +60,6 @@ int				ft_atoi(const char *str);
 char			*ft_strdup(const char *s1);
 t_bool			print_error_msg(char *error);
 unsigned long	kant(void);
+void			ft_log_mutex(int philo, int action, pthread_mutex_t *write);
 
 #endif

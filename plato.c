@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 15:44:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/26 11:51:04 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/26 16:02:15 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static t_bool	free_error(t_aristoteles **aristoteles, t_p_int *close);
 static void		teach_aristoteles(t_spinoza *spinoza,
-					t_aristoteles *aristoteles, t_p_int *close);
+					t_aristoteles *aristoteles, t_p_int *close,
+					pthread_mutex_t *write);
 static void		add_aristoteles_to_lst(t_aristoteles **aristoteles,
 					t_aristoteles *new_aristoteles);
 static void		close_the_circle(t_aristoteles *aristoteles);
@@ -30,9 +31,11 @@ la cual esta indicada en spinoza, carga el puntero aristoteles con
 el primer elemento de la lista circular de los aristoteles
 @param spinoza estructura de uso general
 @param aristoteles el puntero al primer elemento dde la listaa circular
+@param write mute para el log
 @return Verdadero, si ha logrado alocar la memoria para N-aristoteles
 */
-t_bool	plato(t_spinoza *spinoza, t_aristoteles **aristoteles)
+t_bool	plato(t_spinoza *spinoza, t_aristoteles **aristoteles,
+				pthread_mutex_t *write)
 {
 	t_aristoteles	*local_aristoteles;
 	t_p_int			*close;
@@ -51,7 +54,7 @@ t_bool	plato(t_spinoza *spinoza, t_aristoteles **aristoteles)
 				return (free_error(aristoteles, close));
 			if (pthread_mutex_init(&(local_aristoteles->fork), NULL))
 				return (free_error(aristoteles, close));
-			teach_aristoteles(spinoza, local_aristoteles, close);
+			teach_aristoteles(spinoza, local_aristoteles, close, write);
 			add_aristoteles_to_lst(aristoteles, local_aristoteles);
 			n_aris--;
 		}
@@ -62,7 +65,7 @@ t_bool	plato(t_spinoza *spinoza, t_aristoteles **aristoteles)
 
 //Carga a aristoteles con las cosas necesarias
 static void	teach_aristoteles(t_spinoza *spinoza, t_aristoteles *aristoteles,
-t_p_int *close)
+t_p_int *close, pthread_mutex_t *write)
 {
 	static int		new_id;
 
@@ -72,6 +75,7 @@ t_p_int *close)
 	aristoteles->thread = 0;
 	aristoteles->t_last_meal = 0;
 	aristoteles->should_close = close;
+	aristoteles->write = write;
 	new_id++;
 }
 

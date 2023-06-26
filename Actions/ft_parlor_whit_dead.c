@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:35:27 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/26 12:23:15 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/26 16:05:31 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,15 @@ Gestiona la espera y cuenta si el filosofo debería morir
 */
 t_bool	ft_parlor_whit_dead(t_aristoteles *aristoteles)
 {
-	if (aristoteles->t_last_meal <= aristoteles->spinoza.time_to_die)
+	if (aristoteles->t_last_meal <= aristoteles->spinoza.time_to_die
+		&& *(aristoteles->should_close))
 	{
 		ft_usleep(T_PROGRES);
 		aristoteles->t_last_meal += T_PROGRES;
 		return (true);
 	}
 	if (*(aristoteles->should_close))
-		ft_log(aristoteles->id, 5);
+		ft_log_mutex(aristoteles->id, 5, aristoteles->write);
 	return (false);
 }
 

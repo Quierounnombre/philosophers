@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:15:49 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/26 12:08:19 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/26 16:08:09 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,10 @@ static void	wait_for_turn(t_aristoteles *aristoteles)
 		&& time < aristoteles->spinoza.time_to_eat)
 		time += T_PROGRES;
 	if (aristoteles->t_last_meal > aristoteles->spinoza.time_to_die)
+	{
+		ft_log_mutex(aristoteles->id, 5, aristoteles->write);
 		*(aristoteles->should_close) = false;
+	}
 	if (aristoteles->spinoza.n_philos % 2
 		&& aristoteles->id == aristoteles->spinoza.n_philos - 1)
 	{
@@ -83,13 +86,16 @@ static void	wait_for_turn(t_aristoteles *aristoteles)
 			&& time < aristoteles->spinoza.time_to_eat)
 			time += T_PROGRES;
 		if (aristoteles->t_last_meal > aristoteles->spinoza.time_to_die)
-		*(aristoteles->should_close) = false;
+		{
+			ft_log_mutex(aristoteles->id, 5, aristoteles->write);
+			*(aristoteles->should_close) = false;
+		}
 	}
 }
 
 static void	wait_to_die(t_aristoteles *aris)
 {
-	ft_log(0, 1);
+	ft_log_mutex(0, 1, aris->write);
 	while (ft_parlor_whit_dead(aris))
 	{
 	}
