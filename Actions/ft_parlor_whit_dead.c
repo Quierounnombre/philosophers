@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:35:27 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/26 11:26:39 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/26 12:23:15 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ t_bool	ft_parlor_whit_dead(t_aristoteles *aristoteles)
 		aristoteles->t_last_meal += T_PROGRES;
 		return (true);
 	}
-	ft_log(aristoteles->id, 5);
+	if (*(aristoteles->should_close))
+		ft_log(aristoteles->id, 5);
 	return (false);
 }
 

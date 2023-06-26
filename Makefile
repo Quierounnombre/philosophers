@@ -1,7 +1,7 @@
 NAME = philo
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=thread
 RM = rm -f
 
 BLACK = \033[0;30m
