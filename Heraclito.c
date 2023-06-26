@@ -6,13 +6,14 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:15:49 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/23 16:58:19 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/23 17:09:00 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "laplace.h"
 
 static void	flow(t_aristoteles *aristoteles);
+static void	wait_to_die(t_aristoteles *aris);
 static void	wait_for_turn(t_aristoteles *aristoteles);
 
 /*
@@ -34,12 +35,17 @@ void	*heraclito(void *ptr)
 	t_aristoteles	*aristoteles;
 
 	aristoteles = ptr;
-	if (aristoteles->id % 2 && *(aristoteles->should_close))
-		flow(aristoteles);
+	if (aristoteles->spinoza.n_philos == 1)
+		wait_to_die(aristoteles);
 	else
-		wait_for_turn(aristoteles);
-	while (aristoteles->spinoza.meals && *(aristoteles->should_close))
-		flow(aristoteles);
+	{
+		if (aristoteles->id % 2 && *(aristoteles->should_close))
+			flow(aristoteles);
+		else
+			wait_for_turn(aristoteles);
+		while (aristoteles->spinoza.meals && *(aristoteles->should_close))
+			flow(aristoteles);
+	}
 	usleep(US_TO_MS);
 	return (NULL);
 }
@@ -74,4 +80,13 @@ static void	wait_for_turn(t_aristoteles *aristoteles)
 		if (aristoteles->t_last_meal > aristoteles->spinoza.time_to_die)
 			*(aristoteles->should_close) = false;
 	}
+}
+
+static void	wait_to_die(t_aristoteles *aris)
+{
+	ft_log(0, 1);
+	while (ft_parlor_whit_dead(aris))
+	{
+	}
+	*(aris->should_close) = false;
 }
