@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:15:49 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/23 17:09:00 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/26 11:24:38 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,10 @@ static void	flow(t_aristoteles *aristoteles)
 	if (*(aristoteles->should_close))
 		ft_sleep(aristoteles);
 	if (*(aristoteles->should_close))
+	{
 		ft_think(aristoteles);
+		//wait_for_turn(aristoteles);
+	}
 	if (aristoteles->spinoza.meals > 0 && *(aristoteles->should_close))
 		aristoteles->spinoza.meals = aristoteles->spinoza.meals - 1;
 }
@@ -70,6 +73,8 @@ static void	wait_for_turn(t_aristoteles *aristoteles)
 	while (ft_parlor_whit_dead(aristoteles)
 		&& time < aristoteles->spinoza.time_to_eat)
 		time += T_PROGRES;
+	if (aristoteles->t_last_meal > aristoteles->spinoza.time_to_die)
+		*(aristoteles->should_close) = false;
 	if (aristoteles->spinoza.n_philos % 2
 		&& aristoteles->id == aristoteles->spinoza.n_philos - 1)
 	{
@@ -78,7 +83,7 @@ static void	wait_for_turn(t_aristoteles *aristoteles)
 			&& time < aristoteles->spinoza.time_to_eat)
 			time += T_PROGRES;
 		if (aristoteles->t_last_meal > aristoteles->spinoza.time_to_die)
-			*(aristoteles->should_close) = false;
+		*(aristoteles->should_close) = false;
 	}
 }
 
