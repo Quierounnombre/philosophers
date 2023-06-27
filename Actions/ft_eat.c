@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:26:18 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/27 16:45:25 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/27 17:50:21 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_eat(t_aristoteles *aris)
 	if (aris->id % 2)
 		usleep(100);
 	take_a_fork(aris);
-	aris->t_last_meal = 0;
+	aris->init_time = kant();
 	if (*(aris->should_close))
 		ft_log_mutex(2, aris->write, aris->should_close, aris);
 	while (time <= aris->spinoza.time_to_eat && *(aris->should_close))
