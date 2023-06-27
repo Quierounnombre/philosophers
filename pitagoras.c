@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:36:54 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/27 12:39:14 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/27 14:51:47 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,6 @@ static void	make_thread(pthread_t *new_thread, t_aristoteles *ptr)
 {
 	pthread_create(new_thread, NULL, heraclito, ptr);
 	pthread_detach(ptr->thread);
+	pthread_create(&(ptr->crono), NULL, schopenhauer, ptr);
+	pthread_detach(ptr->crono);
 }

@@ -6,14 +6,13 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:15:49 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/27 13:08:51 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/27 16:46:12 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "laplace.h"
 
 static void	flow(t_aristoteles *aristoteles);
-static void	wait_to_die(t_aristoteles *aris);
 
 /*
 @par
@@ -35,15 +34,10 @@ void	*heraclito(void *ptr)
 
 	aristoteles = ptr;
 	while (!(*(aristoteles->should_close)))
-		usleep(US_TO_MS);
-	if (aristoteles->spinoza.n_philos == 1)
-		wait_to_die(aristoteles);
-	else
-	{
-		while (aristoteles->spinoza.meals && *(aristoteles->should_close))
-			flow(aristoteles);
-	}
-	usleep(US_TO_MS);
+		ft_usleep(T_PROGRES);
+	while (aristoteles->spinoza.meals && *(aristoteles->should_close))
+		flow(aristoteles);
+	usleep(US_TO_MS * 1000);
 	pthread_mutex_destroy(&(aristoteles->fork));
 	pthread_join(aristoteles->thread, NULL);
 	free(aristoteles);
@@ -62,11 +56,3 @@ static void	flow(t_aristoteles *aristoteles)
 		aristoteles->spinoza.meals = aristoteles->spinoza.meals - 1;
 }
 
-static void	wait_to_die(t_aristoteles *aris)
-{
-	ft_log_mutex(0, 1, aris->write, aris->should_close);
-	while (ft_parlor_whit_dead(aris))
-	{
-	}
-	*(aris->should_close) = false;
-}

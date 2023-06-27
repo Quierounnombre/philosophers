@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:43:11 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/27 12:55:39 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/27 16:47:26 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ typedef struct s_spinoza
 	int		meals;
 }			t_spinoza;
 
-typedef _Atomic int	t_p_int;
+typedef _Atomic int				t_p_int;
+typedef _Atomic unsigned long	t_p_ul;
 
 /*
 @par aristoteles fue un discipulo de platón, a diferencia de su maestro el
@@ -71,6 +72,7 @@ a numerosas disciplinas.
 @param id Es el identificador del aristoteles
 @param spinoza es la estructura general del philo
 @param pthread	es el identificador del theread
+@param crono es el hilo que gestiona el tiempo
 @param t_last_meal es el tiempo desde que termino su ultima comida
 @param fork mutex para el control de las comidas
 @param right es el filosofo que tiene a su derecha.
@@ -79,14 +81,16 @@ a numerosas disciplinas.
 */
 typedef struct s_aristoteles
 {
-	int						id;
+	t_p_int					id;
 	t_spinoza				spinoza;
 	pthread_t				thread;
-	int						t_last_meal;
+	pthread_t				crono;
+	t_p_int					t_last_meal;
 	pthread_mutex_t			fork;
 	struct s_aristoteles	*right;
 	t_p_int					*should_close;
 	pthread_mutex_t			*write;
+	t_p_ul					init_time;
 }			t_aristoteles;
 
 //------------------------------------------------------------------------------
@@ -107,7 +111,7 @@ typedef struct s_aristoteles
 #  define ERROR_MSG_INCORRECT_PARSE "\n\n\
 Los argumentos entán mal formateados,\
 tienen que estar en formato numerico entero(POSITIVO),\n\
-ej: '4' '1000' '1000' '1000' ('5') etc, distribuidos \
+no nulo, ej: '4' '1000' '1000' '1000' ('5') etc, distribuidos \
 de esta manera:\n\
 numero de filosofos\n\
 tiempo hasta su muerte(en ms)\n\
@@ -121,7 +125,7 @@ tiempo para dormir(en ms)\n\
 # endif
 
 # ifndef T_PROGRES
-#  define T_PROGRES 1
+#  define T_PROGRES 5
 # endif
 
 #endif

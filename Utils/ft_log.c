@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 14:15:13 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/26 16:09:27 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/27 16:06:15 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Gestiona todo el output por consola del philosophers,
 @param philo es el numero del philo que ejecuta la acción
 @param action es el tipo de accion que va a ejecutar
 */
-void	ft_log(int philo, int action)
+void	ft_log(int philo, int action, unsigned long time)
 {
 	char			*s;
 
@@ -39,5 +39,5 @@ void	ft_log(int philo, int action)
 		s = "\033[0;34mis thinking\033[0m";
 	if (action == 5)
 		s = "died";
-	printf("\033[0;36m%ld\033[0m %d %s\n", kant(), philo, s);
+	printf("\033[0;36m%lu\033[0m %d %s\n", time, philo, s);
 }

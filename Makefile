@@ -42,6 +42,7 @@ FILES_UTILS =	ft_atoi \
 				print_error_msg \
 				ft_log \
 				ft_log_mutex \
+				ft_usleep \
 
 DIR_UTILS = ./Utils/
 SRCS_UTILS = $(addprefix $(DIR_UTILS), $(addsuffix .c, $(FILES_UTILS)))

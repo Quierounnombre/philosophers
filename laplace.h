@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:39:34 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/27 11:12:49 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/27 15:59:12 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_bool			plato(t_spinoza *spinoza, t_aristoteles **aristoteles,
 					pthread_mutex_t *write);
 void			*heraclito(void *ptr);
 void			pitagoras(t_aristoteles *aristoteles);
-void			schopenhauer(t_aristoteles *aris);
+void			*schopenhauer(void *ptr);
 
 //ACTIONS
 
@@ -53,14 +53,15 @@ void			ft_think(t_aristoteles *aris);
 
 //UTILS
 
-void			ft_log(int philo, int action);
+void			ft_log(int philo, int action, unsigned long time);
 char			*ft_itoa(int c);
 size_t			ft_strlen(const char *s);
 int				ft_atoi(const char *str);
 char			*ft_strdup(const char *s1);
 t_bool			print_error_msg(char *error);
 unsigned long	kant(void);
-void			ft_log_mutex(int philo, int action, pthread_mutex_t *write,
-					t_p_int *should_close);
+void			ft_log_mutex(int action, pthread_mutex_t *write,
+					t_p_int *should_close, t_aristoteles *aris);
+void			ft_usleep(unsigned long wait_time);
 
 #endif

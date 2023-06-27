@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 14:25:08 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/26 11:48:26 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/27 15:18:34 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,34 +31,18 @@ circulo de la vida era algo perfectamente moral(suicidio)
 Ademas fue super influyente de manera postuma, donde destacan muchos autores,
 entre los que quiero destacar a Nietzschez
 
-@brief schopenhauer Es el que limpia la estructura aristoteles
-@param aris la estructura a limpiar, importante recordar que es una lista
-circular
+@brief schopenhauer gestiona el tiempo de vida de los filosofos
+@param aris es el foli a geestionar el tiempo
 */
-void	schopenhauer(t_aristoteles *aris)
+void	*schopenhauer(void *ptr)
 {
-	t_aristoteles	*tmp;
-	t_aristoteles	*last;
-	t_aristoteles	*head;
+	t_aristoteles	*aris;
 
-	if (aris->right != aris)
+	aris = ptr;
+	while (!(*(aris->should_close)))
+		ft_usleep(T_PROGRES);
+	while (ft_parlor_whit_dead(aris))
 	{
-		last = aris;
-		while (last->right != aris)
-			last = last->right;
-		tmp = aris;
-		while (tmp != last->right)
-		{
-			head = tmp;
-			tmp = tmp->right;
-			pthread_mutex_destroy(&(head->fork));
-			pthread_join(head->thread, NULL);
-			free(head);
-		}
 	}
-	else
-	{
-		pthread_mutex_destroy(&(aris->fork));
-		free(aris);
-	}
+	return (NULL);
 }

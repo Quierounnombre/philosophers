@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:31:36 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/27 13:09:30 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/27 16:01:21 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ void	ft_think(t_aristoteles *aris)
 
 	time = 0;
 	if (*(aris->should_close))
-		ft_log_mutex(aris->id, 4, aris->write, aris->should_close);
+		ft_log_mutex(4, aris->write, aris->should_close, aris);
 }

@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 15:44:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/27 13:08:25 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/27 16:24:35 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ t_p_int *close, pthread_mutex_t *write)
 	aristoteles->spinoza = *spinoza;
 	aristoteles->right = NULL;
 	aristoteles->thread = 0;
-	aristoteles->t_last_meal = (int)kant();
+	aristoteles->crono = 0;
 	aristoteles->should_close = close;
 	aristoteles->write = write;
 	new_id++;
