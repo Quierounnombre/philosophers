@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:39:34 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/26 16:03:24 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/27 11:12:49 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int				ft_atoi(const char *str);
 char			*ft_strdup(const char *s1);
 t_bool			print_error_msg(char *error);
 unsigned long	kant(void);
-void			ft_log_mutex(int philo, int action, pthread_mutex_t *write);
+void			ft_log_mutex(int philo, int action, pthread_mutex_t *write,
+					t_p_int *should_close);
 
 #endif

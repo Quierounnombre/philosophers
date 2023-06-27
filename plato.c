@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 15:44:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/26 16:02:15 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/27 13:08:25 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_bool	plato(t_spinoza *spinoza, t_aristoteles **aristoteles,
 	close = malloc(sizeof(t_p_int));
 	if (close)
 	{
-		*close = true;
+		*close = false;
 		while (n_aris)
 		{
 			local_aristoteles = (t_aristoteles *)malloc(sizeof(t_aristoteles));
@@ -67,13 +67,13 @@ t_bool	plato(t_spinoza *spinoza, t_aristoteles **aristoteles,
 static void	teach_aristoteles(t_spinoza *spinoza, t_aristoteles *aristoteles,
 t_p_int *close, pthread_mutex_t *write)
 {
-	static int		new_id;
+	static unsigned int		new_id;
 
 	aristoteles->id = new_id;
 	aristoteles->spinoza = *spinoza;
 	aristoteles->right = NULL;
 	aristoteles->thread = 0;
-	aristoteles->t_last_meal = 0;
+	aristoteles->t_last_meal = (int)kant();
 	aristoteles->should_close = close;
 	aristoteles->write = write;
 	new_id++;
