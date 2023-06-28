@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:15:49 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/27 18:09:41 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/28 11:21:12 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,3 @@ static void	flow(t_aristoteles *aristoteles)
 	if (aristoteles->spinoza.meals > 0 && *(aristoteles->should_close))
 		aristoteles->spinoza.meals = aristoteles->spinoza.meals - 1;
 }
-

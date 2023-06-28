@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:43:11 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/27 17:44:30 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/28 11:22:13 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ typedef enum s_bool
 	true = 1
 }			t_bool;
 
+typedef _Atomic int				t_p_int;
+typedef _Atomic unsigned long	t_p_ul;
+
 /*
 @par spinoza fue un filosofo racionalista del siglo 17, y es considerado uno de
 sus principales defensores junto a descartes y leibniz, este ultimo fue su
@@ -52,11 +55,8 @@ typedef struct s_spinoza
 	int		time_to_die;
 	int		time_to_eat;
 	int		time_to_sleep;
-	int		meals;
+	t_p_int	meals;
 }			t_spinoza;
-
-typedef _Atomic int				t_p_int;
-typedef _Atomic unsigned long	t_p_ul;
 
 /*
 @par aristoteles fue un discipulo de platón, a diferencia de su maestro el

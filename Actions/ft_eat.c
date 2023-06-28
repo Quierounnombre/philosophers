@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:26:18 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/27 17:50:21 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/28 12:04:04 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,25 +41,15 @@ void	ft_eat(t_aristoteles *aris)
 static void	take_a_fork(t_aristoteles *aris)
 {
 	if (aris->id % 2 && *(aris->should_close))
-		pthread_mutex_lock(&(aris->fork));
-	else if (*(aris->should_close))
 		pthread_mutex_lock(&(aris->right->fork));
-	else
-	{
-		pthread_mutex_unlock(&(aris->fork));
-		return ;
-	}
+	else if (*(aris->should_close))
+		pthread_mutex_lock(&(aris->fork));
 	if (*(aris->should_close))
 		ft_log_mutex(1, aris->write, aris->should_close, aris);
 	if (aris->id % 2 && *(aris->should_close))
-		pthread_mutex_lock(&(aris->right->fork));
-	else if (*(aris->should_close))
 		pthread_mutex_lock(&(aris->fork));
-	else
-	{
-		pthread_mutex_unlock(&(aris->fork));
-		return ;
-	}
+	else if (*(aris->should_close))
+		pthread_mutex_lock(&(aris->right->fork));
 	if (*(aris->should_close))
 		ft_log_mutex(1, aris->write, aris->should_close, aris);
 }
