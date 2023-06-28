@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:36:54 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/27 14:51:47 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/28 10:54:47 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	pitagoras(t_aristoteles *aristoteles)
 			ptr = ptr->right;
 		}
 	}
+	usleep(US_TO_MS);
 	*(aristoteles->should_close) = true;
 }
 

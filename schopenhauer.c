@@ -6,11 +6,13 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 14:25:08 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/27 17:55:09 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/28 10:58:27 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "laplace.h"
+
+static void	ft_die(t_aristoteles *aris);
 
 /*
 @par Arthur schopenhauer fue un filósofo aleman, destaca por ser el primero
@@ -41,18 +43,29 @@ void	*schopenhauer(void *ptr)
 	aris = ptr;
 	while (!(*(aris->should_close)))
 		ft_usleep(T_PROGRES);
+	if (aris->spinoza.n_philos == 1)
+	{
+		ft_usleep(aris->spinoza.time_to_die + 1);
+		ft_die(aris);
+		return (NULL);
+	}
 	while (*(aris->should_close))
 	{
-		if (aris->spinoza.meals <= 0)
+		if (!aris->spinoza.meals)
 			break ;
 		ft_usleep(T_PROGRES);
 		aris->t_last_meal = kant() - aris->init_time;
 		if (aris->spinoza.time_to_die <= aris->t_last_meal)
 		{
-			ft_log_mutex(5, aris->write, aris->should_close, aris);
-			*(aris->should_close) = false;
+			ft_die(aris);
 			break ;
 		}
 	}
 	return (NULL);
+}
+
+static void	ft_die(t_aristoteles *aris)
+{
+	ft_log_mutex(5, aris->write, aris->should_close, aris);
+	*(aris->should_close) = false;
 }

@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:15:49 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/27 16:46:12 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/27 18:09:41 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,17 @@ void	*heraclito(void *ptr)
 	aristoteles = ptr;
 	while (!(*(aristoteles->should_close)))
 		ft_usleep(T_PROGRES);
-	while (aristoteles->spinoza.meals && *(aristoteles->should_close))
-		flow(aristoteles);
+	if (aristoteles->spinoza.n_philos > 1)
+	{
+		while (aristoteles->spinoza.meals && *(aristoteles->should_close))
+			flow(aristoteles);
+	}
+	else
+	{
+		ft_log(0, 1, kant());
+		while (*(aristoteles->should_close))
+			ft_usleep(T_PROGRES);
+	}
 	usleep(US_TO_MS * 1000);
 	pthread_mutex_destroy(&(aristoteles->fork));
 	pthread_join(aristoteles->thread, NULL);
