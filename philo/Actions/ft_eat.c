@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:26:18 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/28 17:52:41 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/29 10:49:46 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static void	take_a_fork(t_aristoteles *aris)
 {
 	if (*(aris->should_close))
 		pthread_mutex_lock(&(aris->fork));
+	if (*(aris->should_close))
+		ft_log_mutex(1, aris->write, aris->should_close, aris);
 	if (*(aris->should_close))
 		pthread_mutex_lock(&(aris->right->fork));
 	if (*(aris->should_close))
