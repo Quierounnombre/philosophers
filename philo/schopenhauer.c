@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 14:25:08 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/28 11:24:58 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/04 15:04:21 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,6 @@ void	*schopenhauer(void *ptr)
 	aris = ptr;
 	while (!(*(aris->should_close)))
 		ft_usleep(T_PROGRES);
-	if (aris->spinoza.n_philos == 1)
-	{
-		ft_usleep(aris->spinoza.time_to_die + 1);
-		ft_die(aris);
-		return (NULL);
-	}
 	while (*(aris->should_close))
 	{
 		if (!aris->spinoza.meals)
